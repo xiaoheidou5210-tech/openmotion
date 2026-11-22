@@ -1,0 +1,59 @@
+<template>
+  <style>
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 400; }
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 700; }
+    #lines-root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #243126;
+      color: #f4efe4;
+      font-family: "Sample CJK", sans-serif;
+    }
+    .line {
+      position: absolute;
+      left: 220px;
+      height: 14px;
+      width: 980px;
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+    #line-a { top: 360px; background: #e25b2a; }
+    #line-b { top: 430px; background: #d7a15e; }
+    #line-c { top: 500px; background: #f4efe4; }
+    #lines-dot {
+      position: absolute;
+      left: 1172px;
+      top: 408px;
+      width: 48px;
+      height: 48px;
+      border-radius: 24px;
+      background: #f4efe4;
+    }
+    #lines-kicker, #lines-title, #lines-note { position: absolute; left: 220px; margin: 0; }
+    #lines-kicker { top: 180px; font-size: 28px; letter-spacing: 8px; color: #d7a15e; }
+    #lines-title { top: 230px; font-size: 96px; font-weight: 700; }
+    #lines-note { top: 600px; font-size: 42px; }
+  </style>
+  <section id="lines-root" data-hf-id="lines-root" data-composition-id="lines" data-width="1920" data-height="1080" data-duration="5">
+    <p id="lines-kicker" data-hf-id="lines-kicker">第三拍</p>
+    <h1 id="lines-title" data-hf-id="lines-title">三线</h1>
+    <div id="line-a" class="line" data-hf-id="line-a"></div>
+    <div id="line-b" class="line" data-hf-id="line-b"></div>
+    <div id="line-c" class="line" data-hf-id="line-c"></div>
+    <div id="lines-dot" data-hf-id="lines-dot"></div>
+    <p id="lines-note" data-hf-id="lines-note">它们在中点会合</p>
+  </section>
+  <script>
+    const timeline = gsap.timeline({ paused: true });
+    timeline.fromTo('#line-a', { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: 'power2.out' }, 0.25);
+    timeline.fromTo('#line-b', { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: 'power2.out' }, 0.5);
+    timeline.fromTo('#line-c', { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: 'power2.out' }, 0.75);
+    timeline.fromTo('#lines-dot', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.6)' }, 1.35);
+    timeline.fromTo('#lines-title', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out' }, 0.15);
+    timeline.fromTo('#lines-note', { opacity: 0 }, { opacity: 1, duration: 0.45 }, 1.55);
+    timeline.fromTo('#lines-kicker', { opacity: 0 }, { opacity: 1, duration: 0.35 }, 0.1);
+    window.__timelines = window.__timelines || {};
+    window.__timelines.lines = timeline;
+  </script>
+</template>

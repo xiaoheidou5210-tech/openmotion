@@ -1,0 +1,17 @@
+{
+  "customerReady": false,
+  "linuxExportVerified": true,
+  "windowsExecuted": false,
+  "macExecuted": false,
+  "verifiedExportSha256": "870ead46df1a8ab067a0763b0b4b8facf2720e9a3a043995d4b0634b746571bc",
+  "blockers": [
+    {
+      "id": "windows-not-executed",
+      "evidence": "Windows Chromium, extracted Node, FFmpeg, and Windows node_modules are in the Windows archive. This machine cannot run those PE files."
+    },
+    {
+      "id": "mac-not-assembled",
+      "evidence": "No Apple Silicon browser, encoder, Node, or node_modules was built."
+    }
+  ]
+}

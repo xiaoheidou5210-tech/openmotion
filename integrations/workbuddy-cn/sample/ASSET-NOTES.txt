@@ -1,0 +1,5 @@
+Original Chinese copy and CSS geometry for the local OpenMotion smoke film.
+assets/gsap.min.js is copied when the project is created, from the checkout dependency gsap 3.15.0.
+That file stays under the GreenSock Standard "no charge" license. This sample does not relicense it.
+No font file is included. CSS @font-face uses src: local() for faces already installed on the machine.
+WenQuanYi Micro Hei, when present, stays under its own license and is not redistributed here.

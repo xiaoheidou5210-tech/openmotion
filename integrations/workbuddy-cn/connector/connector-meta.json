@@ -1,0 +1,22 @@
+{
+  "name": "开源视频工程",
+  "name_zh": "开源视频工程",
+  "name_en": "OpenMotion Local",
+  "description": "Create an editable local video project and export an MP4 with the pinned Hyperframes renderer.",
+  "description_zh": "在本机 OpenMotion 源码运行时里创建可编辑工程，并用锁定的 Hyperframes 渲染导出 MP4。",
+  "description_en": "Create an editable project in a local OpenMotion checkout and export an MP4 with pinned Hyperframes.",
+  "source": "openmotion-workbuddy-cn",
+  "type": "mcp",
+  "version": "0.2.0",
+  "examples_zh": [
+    "检查本机是否已有可用的渲染依赖",
+    "用中文文案和几何图形做一段二十秒成片",
+    "把当前工程导出为 MP4 并做技术校验"
+  ],
+  "examples_en": [
+    "Check whether this machine can render",
+    "Make a twenty second film from Chinese copy and geometry",
+    "Export the current project to MP4 and verify it"
+  ],
+  "minWorkbuddyVersion": "4.22.15"
+}

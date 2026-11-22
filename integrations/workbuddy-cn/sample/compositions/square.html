@@ -1,0 +1,42 @@
+<template>
+  <style>
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 400; }
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 700; }
+    #square-root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #f4efe4;
+      color: #1c1915;
+      font-family: "Sample CJK", sans-serif;
+    }
+    #square-block {
+      position: absolute;
+      left: 1180px;
+      top: 290px;
+      width: 420px;
+      height: 420px;
+      background: #2f6f62;
+      transform-origin: center center;
+    }
+    #square-kicker, #square-title, #square-note { position: absolute; left: 140px; margin: 0; }
+    #square-kicker { top: 250px; font-size: 28px; letter-spacing: 8px; color: #2f6f62; }
+    #square-title { top: 320px; font-size: 120px; font-weight: 700; }
+    #square-note { top: 490px; font-size: 42px; }
+  </style>
+  <section id="square-root" data-hf-id="square-root" data-composition-id="square" data-width="1920" data-height="1080" data-duration="5">
+    <div id="square-block" data-hf-id="square-block"></div>
+    <p id="square-kicker" data-hf-id="square-kicker">第二拍</p>
+    <h1 id="square-title" data-hf-id="square-title">四边</h1>
+    <p id="square-note" data-hf-id="square-note">方把这一拍折住</p>
+  </section>
+  <script>
+    const timeline = gsap.timeline({ paused: true });
+    timeline.fromTo('#square-block', { rotation: -28, scale: 0.4, opacity: 0 }, { rotation: 0, scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out' }, 0.15);
+    timeline.fromTo('#square-title', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out' }, 0.45);
+    timeline.fromTo('#square-note', { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'power1.out' }, 1.05);
+    timeline.fromTo('#square-kicker', { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.3);
+    window.__timelines = window.__timelines || {};
+    window.__timelines.square = timeline;
+  </script>
+</template>
