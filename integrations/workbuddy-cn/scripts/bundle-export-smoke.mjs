@@ -7,9 +7,9 @@ const layout = process.argv[2];
 if (!layout) throw new Error('Usage: node scripts/bundle-export-smoke.mjs LAYOUT');
 const app = path.join(layout, 'runtime/app');
 const browser = path.join(layout, 'runtime/browser/linux-x64/chrome-linux/chrome');
-const ffmpeg = path.join(layout, 'runtime/ffmpeg/ffmpeg-n8.1.3-39-g660b5aa7db-linux64-gpl-8.1/bin/ffmpeg');
-const ffprobe = path.join(layout, 'runtime/ffmpeg/ffmpeg-n8.1.3-39-g660b5aa7db-linux64-gpl-8.1/bin/ffprobe');
-const data = path.join(layout, '.smoke-data');
+const ffmpeg = path.join(layout, 'runtime/ffmpeg/bin/ffmpeg');
+const ffprobe = path.join(layout, 'runtime/ffmpeg/bin/ffprobe');
+const data = path.join(layout, '.smoke-data-ffmpeg711b');
 const env = {
   ...process.env,
   MOTION_DATA_DIR: data,
@@ -23,7 +23,7 @@ const env = {
   HYPERFRAMES_FFPROBE_PATH: ffprobe,
   FFMPEG_PATH: ffmpeg,
   FFPROBE_PATH: ffprobe,
-  PORT: '4187',
+  PORT: '4188',
 };
 const child = spawn(process.execPath, ['--experimental-strip-types', path.join(app, 'mcp.ts')], {
   cwd: app, env, stdio: ['pipe', 'pipe', 'pipe'],
@@ -65,15 +65,15 @@ files.push({ path: 'assets/gsap.min.js', content: await readFile(path.join(app, 
 const init = await send('initialize', { protocolVersion: '2025-06-18', capabilities: {}, clientInfo: { name: 'bundle-smoke', version: '0.3.0' } });
 const listed = await send('tools/list', {});
 const names = listed.result?.tools?.map(tool => tool.name) || [];
-const created = await send('tools/call', { name: 'openmotion_create_project', arguments: { requestId: 'bundle-create', projectType: 'natural_language', title: '一点四边三线', requirements: '二十秒中文几何成片' } });
+const created = await send('tools/call', { name: 'openmotion_create_project', arguments: { requestId: 'bundle-create-ffmpeg711b', projectType: 'natural_language', title: '一点四边三线', requirements: '二十秒中文几何成片' } });
 const createdValue = JSON.parse(created.result?.content?.[0]?.text || '{}');
 const edited = await send('tools/call', { name: 'openmotion_edit_project', arguments: {
-  projectId: createdValue.projectId, requestId: 'bundle-edit', expectedRevision: createdValue.revision, expectedVersionId: createdValue.version?.versionId,
+  projectId: createdValue.projectId, requestId: 'bundle-edit-ffmpeg711b', expectedRevision: createdValue.revision, expectedVersionId: createdValue.version?.versionId,
   files,
 } });
 const editedValue = JSON.parse(edited.result?.content?.[0]?.text || '{}');
 const exported = await send('tools/call', { name: 'openmotion_export_request', arguments: {
-  projectId: createdValue.projectId, requestId: 'bundle-export', versionId: editedValue.version?.versionId || createdValue.version?.versionId,
+  projectId: createdValue.projectId, requestId: 'bundle-export-ffmpeg711b', versionId: editedValue.version?.versionId || createdValue.version?.versionId,
   expectedRevision: editedValue.revision || createdValue.revision, audio: 'silent',
 } });
 const exportValue = JSON.parse(exported.result?.content?.[0]?.text || '{}');

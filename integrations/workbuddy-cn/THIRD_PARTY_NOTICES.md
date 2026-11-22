@@ -1,6 +1,12 @@
 # Third-party notices
 
-`customerReady` is false. The notes below are the license findings used to stop packaging, not permission to ship a buyer runtime.
+`customerReady` is false because Windows and Mac were not executed. The Linux package uses these notices.
+
+The encoder in the built tree is FFmpeg 7.1.1 plus x264 0.165.x only. FFmpeg is GPL when built with `--enable-gpl`. x264 COPYING is GPL-2. Both source archives and the build commands ship in `runtime/legal/encoder-source`. The Linux executable links only libc and libm. The Windows executable imports only Windows system DLLs and was not run.
+
+Chromium snapshots Linux_x64/1751533 (`got_revision` 3f85d96407489c384105d07da684f47ce3cc4222) and Win_x64/1751520 (`got_revision` b17d8aae454e27eba416d89c37e0c25c889a75dc) do not contain a LICENSE file. The LICENSE text was read from those commits and stored in `runtime/legal`. `chrome-wrapper` names Chromium and a BSD-style license. The generated about_credits page is not in the snapshot and was not rebuilt. Chrome for Testing's headless shell is not included; its ABOUT file says Google Chrome.
+
+Node.js v22.22.2 Windows zip matches the official SHA-256 and contains its own LICENSE. It was not executed.
 
 | Piece | Version inspected | License finding | In the skill directory |
 | --- | --- | --- | --- |

@@ -20,7 +20,7 @@ export function assertDistributionClosed(document) {
   const problems = [];
   if (document?.customerReady !== false) problems.push('customerReady must stay false until browser, FFmpeg, Node, and the OpenMotion MCP server are actually inside the skill');
   const ids = new Set((document?.blockers || []).map(item => item.id));
-  for (const id of ['chrome-for-testing-not-bundled', 'gpl-static-corresponding-source-incomplete', 'windows-chromium-missing', 'windows-not-executed', 'mac-not-assembled']) {
+  for (const id of ['windows-not-executed', 'mac-not-assembled', 'chromium-about-credits-absent']) {
     if (!ids.has(id)) problems.push('missing blocker ' + id);
   }
   if ((document?.blockers || []).some(item => item.bundled === true)) problems.push('a blocker is marked bundled while customerReady is false');

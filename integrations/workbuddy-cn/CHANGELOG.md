@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+
+Replaced the multi-library FFmpeg binary with one built from FFmpeg 7.1.1 and x264 0.165.x only. Linux links libc and libm; libx264 is static. The source archives and build commands are in `runtime/legal/encoder-source`. Windows uses the same sources and was not executed. Chromium LICENSE files were fetched from each snapshot's `got_revision`. The previous BtbN binaries were removed.
+
 ## 0.4.0
 
 Assembled a local OpenMotion service tree and verified Linux MCP export through it. `customerReady` stays false.

@@ -3,34 +3,29 @@
   "linuxExportVerified": true,
   "windowsExecuted": false,
   "macExecuted": false,
-  "layout": "/tmp/om-customer/openmotion-workbuddy-cn",
+  "archive": "/opt/cursor/artifacts/openmotion-workbuddy-cn.tar",
+  "tree": "/tmp/om-customer/openmotion-workbuddy-cn",
   "verifiedExport": {
     "route": "mcp.ts tools/call openmotion_create_project, openmotion_edit_project, openmotion_export_request",
-    "server": "openmotion 0.0.1",
-    "toolCount": 34,
-    "jobId": "1c5d9ec1-5642-4e24-aadf-bdacf3901e79",
-    "projectId": "4a0838e5-c033-463b-8271-60613bf18a6a",
-    "state": "completed",
+    "encoder": "self-built ffmpeg 7.1.1 + x264 0.165.x, libx264, dynamic libc/libm only",
+    "jobState": "completed",
     "verification": "passed",
-    "sha256": "c8b61ece87cfb15830aaa5a2e7ef0b66f5fc38eb512505193e4849c191d6e8b9",
-    "bytes": 431428,
-    "spec": "h264 yuv420p 1920x1080 30/1 20s 600 frames silent"
+    "sha256": "870ead46df1a8ab067a0763b0b4b8facf2720e9a3a043995d4b0634b746571bc",
+    "bytes": 431429,
+    "spec": "h264 yuv420p 1920x1080 30/1 20s silent"
   },
-  "binaries": [
-    {"role": "chromium-linux", "bytes": 554774736, "sha256": "9a4f1aff4f23a82932fca211567d56f81d94546e60172953e5549b888be67436", "version": "160.0.8178.0", "license": "BSD-style as stated by chrome-wrapper. The snapshot zip contained no LICENSE file. Not Google Chrome."},
-    {"role": "ffmpeg-linux-gpl", "bytes": 175384112, "sha256": "e326b881dacc4a486c4037a1bbc77a7889243fa549d1080bfff6bdd0cac0b768", "version": "n8.1.3-39-g660b5aa7db-20261122", "license": "GPL-3.0-or-later, includes libx264"},
-    {"role": "ffprobe-linux-gpl", "bytes": 175150576, "sha256": "21f931a5f19e052db474ce27031fb0036e64cd71e19e118c72246f3448432e82"},
-    {"role": "ffmpeg-source", "bytes": 16923742, "sha256": "dc3ae92ca2514a0c26dbc2dc5aa28ed1cc39b3d0645ac9c828035f4cb3e96eb7", "commit": "660b5aa7dbce1f95cb04b3c7b8e94d79f893d15d"},
-    {"role": "node-win-x64-zip", "bytes": 35656052, "sha256": "7c93e9d92bf68c07182b471aa187e35ee6cd08ef0f24ab060dfff605fcc1c57c", "executed": false},
-    {"role": "ffmpeg-win-gpl-zip", "bytes": 197396631, "sha256": "b16431997ec2685c1baab7dc214537cdbdd48dabdd6e233d4ab0f1e316de0dc7", "executed": false},
-    {"role": "openmotion-linux-node_modules", "bytes": 148994260, "executed": true},
-    {"role": "openmotion-win32-node_modules", "bytes": 161362396, "executed": false}
-  ],
   "blockers": [
-    {"id": "chrome-for-testing-not-bundled", "evidence": "chrome-headless-shell ABOUT says Google Chrome and chrome://terms. LICENSE.headless_shell is a component notice list, not a redistribution grant. Zip sha256 1b150320178ecabe39726bcf3198ebb896ba2b7a07d870db1710914c42d55221."},
-    {"id": "gpl-static-corresponding-source-incomplete", "evidence": "FFmpeg GPL binary is statically linked with libx264 and other libraries. The matching FFmpeg git archive is in runtime/legal. Source for x264, x265, and the other static libraries is not in the package."},
-    {"id": "windows-chromium-missing", "evidence": "Win_x64 snapshot 1751520 chrome-win.zip is 380711551 bytes and was not downloaded."},
-    {"id": "windows-not-executed", "evidence": "No Windows runner. Win32 node_modules, Node zip, and FFmpeg zip were not launched."},
-    {"id": "mac-not-assembled", "evidence": "No Apple Silicon browser, FFmpeg, or node_modules was built."}
+    {
+      "id": "windows-not-executed",
+      "evidence": "Windows Chromium, Node zip, FFmpeg exe and win32 node_modules are in the archive. This machine cannot run PE binaries. No Windows runner was available."
+    },
+    {
+      "id": "mac-not-assembled",
+      "evidence": "No Apple Silicon browser, encoder, Node, or node_modules was built."
+    },
+    {
+      "id": "chromium-about-credits-absent",
+      "evidence": "Snapshot zips contain no LICENSE or about_credits file. chrome-wrapper identifies Chromium and points at a BSD LICENSE file. The LICENSE file was fetched from the snapshot REVISIONS got_revision and placed in runtime/legal. The generated third-party about_credits page was not in the zip and was not regenerated."
+    }
   ]
 }
