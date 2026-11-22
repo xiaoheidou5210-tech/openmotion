@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+
+Generated Chromium about_credits.html from the README.chromium and LICENSE files at both snapshot commits. The two HTML files match. Windows Node is extracted to runtime/node/win32-x64/node.exe with its LICENSE, and scripts/boot.mjs is the local start entry. Platform archives are separate.
+
 ## 0.4.1
 
 Replaced the multi-library FFmpeg binary with one built from FFmpeg 7.1.1 and x264 0.165.x only. Linux links libc and libm; libx264 is static. The source archives and build commands are in `runtime/legal/encoder-source`. Windows uses the same sources and was not executed. Chromium LICENSE files were fetched from each snapshot's `got_revision`. The previous BtbN binaries were removed.

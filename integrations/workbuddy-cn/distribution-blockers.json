@@ -3,29 +3,15 @@
   "linuxExportVerified": true,
   "windowsExecuted": false,
   "macExecuted": false,
-  "archive": "/opt/cursor/artifacts/openmotion-workbuddy-cn.tar",
-  "tree": "/tmp/om-customer/openmotion-workbuddy-cn",
-  "verifiedExport": {
-    "route": "mcp.ts tools/call openmotion_create_project, openmotion_edit_project, openmotion_export_request",
-    "encoder": "self-built ffmpeg 7.1.1 + x264 0.165.x, libx264, dynamic libc/libm only",
-    "jobState": "completed",
-    "verification": "passed",
-    "sha256": "870ead46df1a8ab067a0763b0b4b8facf2720e9a3a043995d4b0634b746571bc",
-    "bytes": 431429,
-    "spec": "h264 yuv420p 1920x1080 30/1 20s silent"
-  },
+  "verifiedExportSha256": "870ead46df1a8ab067a0763b0b4b8facf2720e9a3a043995d4b0634b746571bc",
   "blockers": [
     {
       "id": "windows-not-executed",
-      "evidence": "Windows Chromium, Node zip, FFmpeg exe and win32 node_modules are in the archive. This machine cannot run PE binaries. No Windows runner was available."
+      "evidence": "Windows Chromium, extracted Node, FFmpeg, and Windows node_modules are in the Windows archive. This machine cannot run those PE files."
     },
     {
       "id": "mac-not-assembled",
       "evidence": "No Apple Silicon browser, encoder, Node, or node_modules was built."
-    },
-    {
-      "id": "chromium-about-credits-absent",
-      "evidence": "Snapshot zips contain no LICENSE or about_credits file. chrome-wrapper identifies Chromium and points at a BSD LICENSE file. The LICENSE file was fetched from the snapshot REVISIONS got_revision and placed in runtime/legal. The generated third-party about_credits page was not in the zip and was not regenerated."
     }
   ]
 }
