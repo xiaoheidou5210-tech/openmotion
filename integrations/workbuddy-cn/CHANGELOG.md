@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0
+
+Distribution gate. This is not a customer installer.
+
+- Root `SKILL.md` is the WorkBuddy entry. It does not tell a buyer to clone, run npm, or download a browser.
+- `distribution-blockers.json` keeps `customerReady` false.
+- Recorded assemblies: Linux and Windows Hyperframes/GSAP `node_modules` trees, and a hash-checked Node.js 22.22.2 Windows zip. None of those are inside the skill, and the Windows files were not executed.
+- Chrome for Testing `chrome-headless-shell` is not bundled. Its catalog repository license does not grant redistribution of the binary, and a buyer download is not accepted as mainland onboarding.
+- FFmpeg is not bundled. OpenMotion's phase1 MCP server is not inside the Hyperframes/GSAP trees.
+
 ## 0.2.0
 
 Executable local skill package for this fork.

@@ -1,5 +1,22 @@
 # Third-party notices
 
+`customerReady` is false. The notes below are the license findings used to stop packaging, not permission to ship a buyer runtime.
+
+| Piece | Version inspected | License finding | In the skill directory |
+| --- | --- | --- | --- |
+| OpenMotion / Studio | repository 0.0.1, Studio 0.9.7 | Apache-2.0. Notices stay in `LICENSE` and `studio/LICENSE`. Phase1 export is `server.ts`. | Source remains in the checkout. Not copied into a buyer runtime. |
+| Hyperframes | 0.9.7 | Apache-2.0 | Temporary assembly only |
+| GSAP | 3.15.0 | Standard no-charge license, https://gsap.com/standard-license (effective 2025-04-30). Reproduce and implement for permitted uses. Do not remove notices. Do not use it to build a no-code animation product that competes with Webflow. | Temporary assembly only |
+| esbuild | 0.28.2 | MIT | Inside the temporary assembly |
+| puppeteer-core / @puppeteer/browsers | 25.18.1 / 3.2.7 | Apache-2.0 for the downloader. That is not a license for the Chrome binary. | Downloader would ride with Hyperframes. Browser binary not included. |
+| chrome-headless-shell | 152.0.7977.30 pinned by Hyperframes | No redistribution grant established | Not included |
+| Chromium snapshot chrome-linux.zip | revision 1751533, 260676636 bytes observed by HTTP HEAD | Body not downloaded. License file inside the zip was not read. | Not included |
+| sharp / sharp-libvips | 0.35.5 / 1.3.4 | sharp package metadata says Apache-2.0. `@img/sharp-libvips-linux-x64` is LGPL-3.0-or-later. | Temporary Linux assembly only |
+| FFmpeg | system 6.1.1 used by the earlier Linux checkout render | Not vendored. GPL/LGPL redistribution needs the matching license and source. | Not included |
+| Node.js | 22.22.2 Windows x64 zip | Core license grants redistribution when the notice is kept. SHA-256 `7c93e9d92bf68c07182b471aa187e35ee6cd08ef0f24ab060dfff605fcc1c57c` matched `SHASUMS256.txt`. | Zip verified outside the skill. Not included. `node.exe` not run. |
+
+Docs/CI Node remains 26.11.1. The checkout smoke used v22.23.4. The Windows zip that was hashed is v22.22.2. None of these is a Mac result.
+
 This skill package does not ship those projects. Versions below are the ones this checkout locks. `npm ci` checks the integrity values in `runtime-pin.json` against `package-lock.json`.
 
 | Piece | Version | License | Role |
