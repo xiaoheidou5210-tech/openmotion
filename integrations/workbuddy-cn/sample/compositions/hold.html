@@ -1,0 +1,47 @@
+<template>
+  <style>
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 400; }
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 700; }
+    #hold-root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #1c1915;
+      color: #f4efe4;
+      font-family: "Sample CJK", sans-serif;
+    }
+    #hold-circle, #hold-square {
+      position: absolute;
+      top: 330px;
+    }
+    #hold-circle { left: 1180px; width: 180px; height: 180px; border-radius: 90px; background: #e25b2a; }
+    #hold-square { left: 1420px; width: 180px; height: 180px; background: #2f6f62; }
+    #hold-bar { position: absolute; left: 1180px; top: 560px; width: 420px; height: 16px; background: #d7a15e; transform-origin: left center; }
+    #hold-kicker, #hold-title, #hold-note, #hold-foot { position: absolute; left: 140px; margin: 0; }
+    #hold-kicker { top: 250px; font-size: 28px; letter-spacing: 8px; color: #d7a15e; }
+    #hold-title { top: 320px; font-size: 108px; font-weight: 700; }
+    #hold-note { top: 470px; font-size: 40px; }
+    #hold-foot { top: 560px; font-size: 28px; color: #d7a15e; }
+  </style>
+  <section id="hold-root" data-hf-id="hold-root" data-composition-id="hold" data-width="1920" data-height="1080" data-duration="5">
+    <div id="hold-circle" data-hf-id="hold-circle"></div>
+    <div id="hold-square" data-hf-id="hold-square"></div>
+    <div id="hold-bar" data-hf-id="hold-bar"></div>
+    <p id="hold-kicker" data-hf-id="hold-kicker">落幅</p>
+    <h1 id="hold-title" data-hf-id="hold-title">二十秒</h1>
+    <p id="hold-note" data-hf-id="hold-note">可继续编辑的原生工程</p>
+    <p id="hold-foot" data-hf-id="hold-foot">几何草稿 · 无旁白</p>
+  </section>
+  <script>
+    const timeline = gsap.timeline({ paused: true });
+    timeline.fromTo('#hold-circle', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'power2.out' }, 0.2);
+    timeline.fromTo('#hold-square', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'power2.out' }, 0.4);
+    timeline.fromTo('#hold-bar', { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: 'power2.out' }, 0.7);
+    timeline.fromTo('#hold-title', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.25);
+    timeline.fromTo('#hold-note', { opacity: 0 }, { opacity: 1, duration: 0.45 }, 0.8);
+    timeline.fromTo('#hold-foot', { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.15);
+    timeline.fromTo('#hold-kicker', { opacity: 0 }, { opacity: 1, duration: 0.35 }, 0.1);
+    window.__timelines = window.__timelines || {};
+    window.__timelines.hold = timeline;
+  </script>
+</template>

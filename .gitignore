@@ -8,6 +8,7 @@ __pycache__/
 *.py[cod]
 .venv/
 node_modules/
+integrations/workbuddy-cn/.local/
 .env
 .env.*
 !.env.example

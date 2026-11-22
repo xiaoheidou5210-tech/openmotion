@@ -1,0 +1,19 @@
+{
+  "skillVersion": "0.2.0",
+  "docsRecommendedNode": "26.11.1",
+  "packageEnginesNode": ">=22.18.0",
+  "hyperframes": {
+    "version": "0.9.7",
+    "resolved": "https://registry.npmjs.org/hyperframes/-/hyperframes-0.9.7.tgz",
+    "integrity": "sha512-fVhOCR8qbQOMq/94PttLNZNLpp0SRJ7vTo/mjp+HnoFHRCj/iYv7i9y/SokAQoSpZFFXqpBNGrVkaedeKup09g==",
+    "license": "Apache-2.0"
+  },
+  "gsap": {
+    "version": "3.15.0",
+    "resolved": "https://registry.npmjs.org/gsap/-/gsap-3.15.0.tgz",
+    "integrity": "sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==",
+    "license": "Standard 'no charge' license: https://gsap.com/standard-license."
+  },
+  "renderArgs": ["render", ".", "--format", "mp4", "--json"],
+  "notes": "The Skill does not vendor Node, Chrome, FFmpeg, Hyperframes or GSAP. prepare-runtime.mjs runs npm ci against this checkout's package-lock.json only after --confirm, and npm verifies the integrity field above."
+}

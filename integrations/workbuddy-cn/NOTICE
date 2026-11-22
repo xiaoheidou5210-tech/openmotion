@@ -1,0 +1,14 @@
+This directory is a fork-local addition for a Chinese WorkBuddy skill package.
+It is covered by the Apache License 2.0 in the repository LICENSE.
+It does not relicense OpenMotion, Hyperframes Studio, GSAP, fonts, or any other upstream material.
+
+The Studio editor under studio/ keeps its upstream Apache-2.0 text in studio/LICENSE
+and the description in studio/README.md, including the OpenReel Video MIT notice.
+Those files are copied unchanged into buyer zip licenses/ when the package script runs.
+
+Hyperframes 0.9.7 is an external runtime declared in package-lock.json.
+GSAP 3.15.0 stays under the GreenSock Standard "no charge" license.
+This package does not vendor Node.js, Chrome, FFmpeg, Hyperframes, or GSAP.
+
+Modified or added files are the files in integrations/workbuddy-cn/.
+No upstream source file in this change is rewritten to remove its copyright or license.

@@ -1,0 +1,43 @@
+<template>
+  <style>
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 400; }
+    @font-face { font-family: "Sample CJK"; src: local("WenQuanYi Micro Hei"), local("PingFang SC"), local("Hiragino Sans GB"), local("Noto Sans CJK SC"), local("Microsoft YaHei"), local("Droid Sans Fallback"); font-weight: 700; }
+    #circle-root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #1c1915;
+      color: #f4efe4;
+      font-family: "Sample CJK", sans-serif;
+    }
+    #circle-disc {
+      position: absolute;
+      left: 760px;
+      top: 250px;
+      width: 400px;
+      height: 400px;
+      border-radius: 200px;
+      background: #e25b2a;
+      transform-origin: center center;
+    }
+    #circle-kicker, #circle-title, #circle-note { position: absolute; left: 140px; margin: 0; }
+    #circle-kicker { top: 180px; font-size: 28px; letter-spacing: 8px; color: #d7a15e; }
+    #circle-title { top: 250px; font-size: 120px; font-weight: 700; }
+    #circle-note { top: 420px; font-size: 42px; color: #f4efe4; }
+  </style>
+  <section id="circle-root" data-hf-id="circle-root" data-composition-id="circle" data-width="1920" data-height="1080" data-duration="5">
+    <div id="circle-disc" data-hf-id="circle-disc"></div>
+    <p id="circle-kicker" data-hf-id="circle-kicker">第一拍</p>
+    <h1 id="circle-title" data-hf-id="circle-title">一点</h1>
+    <p id="circle-note" data-hf-id="circle-note">圆从这里长开</p>
+  </section>
+  <script>
+    const timeline = gsap.timeline({ paused: true });
+    timeline.fromTo('#circle-disc', { scale: 0.04, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' }, 0.2);
+    timeline.fromTo('#circle-kicker', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.35);
+    timeline.fromTo('#circle-title', { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0.55);
+    timeline.fromTo('#circle-note', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.15);
+    window.__timelines = window.__timelines || {};
+    window.__timelines.circle = timeline;
+  </script>
+</template>

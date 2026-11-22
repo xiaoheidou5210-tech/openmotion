@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "openmotion": {
+      "type": "stdio",
+      "command": "NODE_BINARY",
+      "args": ["--experimental-strip-types", "CHECKOUT/mcp.ts"],
+      "cwd": "CHECKOUT",
+      "env": {
+        "MOTION_DATA_DIR": "DATA_DIRECTORY",
+        "OPENMOTION_TELEMETRY": "0",
+        "HYPERFRAMES_NO_TELEMETRY": "1",
+        "DO_NOT_TRACK": "1"
+      }
+    }
+  }
+}
