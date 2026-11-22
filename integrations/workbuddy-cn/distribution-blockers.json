@@ -1,77 +1,36 @@
 {
   "customerReady": false,
-  "mainlandOnboarding": "blocked",
-  "reason": "A customer package is ready only when Node, FFmpeg, ffprobe, a redistributable browser, and the OpenMotion MCP server that performs native project edits and export are inside the skill directory the buyer already has. This revision does not contain that set.",
-  "verifiedAssembly": [
-    {
-      "id": "hyperframes-gsap-linux-x64",
-      "path": "/tmp/hf-linux/node_modules",
-      "bytes": 114769343,
-      "executed": false,
-      "renderVerified": false,
-      "contains": ["hyperframes@0.9.7", "gsap@3.15.0", "@esbuild/linux-x64", "@img/sharp-linux-x64"]
-    },
-    {
-      "id": "hyperframes-gsap-win32-x64",
-      "path": "/tmp/hf-win/node_modules",
-      "bytes": 127137479,
-      "executed": false,
-      "renderVerified": false,
-      "contains": ["hyperframes@0.9.7", "gsap@3.15.0", "@esbuild/win32-x64/esbuild.exe", "@img/sharp-win32-x64"]
-    },
-    {
-      "id": "node-win-x64-zip",
-      "url": "https://nodejs.org/dist/v22.22.2/node-v22.22.2-win-x64.zip",
-      "bytes": 35656052,
-      "sha256": "7c93e9d92bf68c07182b471aa187e35ee6cd08ef0f24ab060dfff605fcc1c57c",
-      "sha256Source": "https://nodejs.org/dist/v22.22.2/SHASUMS256.txt",
-      "sha256Matched": true,
-      "license": "Node.js license (MIT terms for the core; notice must travel with copies)",
-      "placedInSkill": false,
-      "executed": false
-    }
+  "linuxExportVerified": true,
+  "windowsExecuted": false,
+  "macExecuted": false,
+  "layout": "/tmp/om-customer/openmotion-workbuddy-cn",
+  "verifiedExport": {
+    "route": "mcp.ts tools/call openmotion_create_project, openmotion_edit_project, openmotion_export_request",
+    "server": "openmotion 0.0.1",
+    "toolCount": 34,
+    "jobId": "1c5d9ec1-5642-4e24-aadf-bdacf3901e79",
+    "projectId": "4a0838e5-c033-463b-8271-60613bf18a6a",
+    "state": "completed",
+    "verification": "passed",
+    "sha256": "c8b61ece87cfb15830aaa5a2e7ef0b66f5fc38eb512505193e4849c191d6e8b9",
+    "bytes": 431428,
+    "spec": "h264 yuv420p 1920x1080 30/1 20s 600 frames silent"
+  },
+  "binaries": [
+    {"role": "chromium-linux", "bytes": 554774736, "sha256": "9a4f1aff4f23a82932fca211567d56f81d94546e60172953e5549b888be67436", "version": "160.0.8178.0", "license": "BSD-style as stated by chrome-wrapper. The snapshot zip contained no LICENSE file. Not Google Chrome."},
+    {"role": "ffmpeg-linux-gpl", "bytes": 175384112, "sha256": "e326b881dacc4a486c4037a1bbc77a7889243fa549d1080bfff6bdd0cac0b768", "version": "n8.1.3-39-g660b5aa7db-20261122", "license": "GPL-3.0-or-later, includes libx264"},
+    {"role": "ffprobe-linux-gpl", "bytes": 175150576, "sha256": "21f931a5f19e052db474ce27031fb0036e64cd71e19e118c72246f3448432e82"},
+    {"role": "ffmpeg-source", "bytes": 16923742, "sha256": "dc3ae92ca2514a0c26dbc2dc5aa28ed1cc39b3d0645ac9c828035f4cb3e96eb7", "commit": "660b5aa7dbce1f95cb04b3c7b8e94d79f893d15d"},
+    {"role": "node-win-x64-zip", "bytes": 35656052, "sha256": "7c93e9d92bf68c07182b471aa187e35ee6cd08ef0f24ab060dfff605fcc1c57c", "executed": false},
+    {"role": "ffmpeg-win-gpl-zip", "bytes": 197396631, "sha256": "b16431997ec2685c1baab7dc214537cdbdd48dabdd6e233d4ab0f1e316de0dc7", "executed": false},
+    {"role": "openmotion-linux-node_modules", "bytes": 148994260, "executed": true},
+    {"role": "openmotion-win32-node_modules", "bytes": 161362396, "executed": false}
   ],
   "blockers": [
-    {
-      "id": "browser-not-redistributed",
-      "component": "Browser required by Hyperframes capture",
-      "pinnedByEngine": "chrome-headless-shell 152.0.7977.30 from https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.30/",
-      "licenseFinding": "The chrome-for-testing catalog repository is Apache-2.0. That grant covers the catalog tooling, not the Chrome for Testing binaries. No redistribution grant for chrome-headless-shell was established. A buyer download from storage.googleapis.com is not an acceptable mainland onboarding path.",
-      "chromiumSnapshotObserved": {
-        "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/1751533/chrome-linux.zip",
-        "bytes": 260676636,
-        "bodyDownloaded": false,
-        "licenseFileRead": false
-      },
-      "bundled": false
-    },
-    {
-      "id": "ffmpeg-not-bundled",
-      "component": "FFmpeg and ffprobe",
-      "licenseFinding": "Hyperframes shells out to FFmpeg. GPL and LGPL builds can be redistributed only with their license and corresponding source. No such build, license file, or source archive is in this skill.",
-      "bundled": false
-    },
-    {
-      "id": "node-not-placed",
-      "component": "Node.js >=22.18.0",
-      "licenseFinding": "The Windows x64 zip for v22.22.2 was downloaded and its SHA-256 matched the official SHASUMS256.txt. Node's core license allows redistribution when the notice is kept. The zip is not inside the skill, and node.exe was not executed.",
-      "bundled": false
-    },
-    {
-      "id": "openmotion-mcp-server-not-packed",
-      "component": "OpenMotion phase1 MCP editing and export",
-      "licenseFinding": "OpenMotion and Studio remain Apache-2.0. Phase1 tools/call starts server.ts through ensureService and then POST /motion-api/phase1/call. Export from that server is the native render path. The assembled node_modules trees contain Hyperframes and GSAP only. They do not contain mcp.ts or server.ts, so they are not an OpenMotion editing runtime.",
-      "bundled": false
-    },
-    {
-      "id": "windows-runner-missing",
-      "component": "Windows execution",
-      "detail": "This environment is Linux. The win32 node_modules tree and the Windows Node zip were not launched. Mac Apple Silicon was not assembled or run."
-    },
-    {
-      "id": "libvips-lgpl-if-sharp-is-shipped",
-      "component": "@img/sharp-libvips",
-      "licenseFinding": "@img/sharp-libvips-linux-x64@1.3.4 is LGPL-3.0-or-later. Shipping it requires the LGPL notices and a way for the recipient to relink. It is only in the temporary Linux assembly, not in the skill."
-    }
+    {"id": "chrome-for-testing-not-bundled", "evidence": "chrome-headless-shell ABOUT says Google Chrome and chrome://terms. LICENSE.headless_shell is a component notice list, not a redistribution grant. Zip sha256 1b150320178ecabe39726bcf3198ebb896ba2b7a07d870db1710914c42d55221."},
+    {"id": "gpl-static-corresponding-source-incomplete", "evidence": "FFmpeg GPL binary is statically linked with libx264 and other libraries. The matching FFmpeg git archive is in runtime/legal. Source for x264, x265, and the other static libraries is not in the package."},
+    {"id": "windows-chromium-missing", "evidence": "Win_x64 snapshot 1751520 chrome-win.zip is 380711551 bytes and was not downloaded."},
+    {"id": "windows-not-executed", "evidence": "No Windows runner. Win32 node_modules, Node zip, and FFmpeg zip were not launched."},
+    {"id": "mac-not-assembled", "evidence": "No Apple Silicon browser, FFmpeg, or node_modules was built."}
   ]
 }

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0
+
+Assembled a local OpenMotion service tree and verified Linux MCP export through it. `customerReady` stays false.
+
+- The tree is `/tmp/om-customer/openmotion-workbuddy-cn` and is not committed. It contains the server, production `node_modules`, Chromium 160.0.8178.0, and a GPL FFmpeg build with libx264.
+- MCP create, edit, and export completed. The MP4 is H.264 1920×1080, 20 seconds, 600 frames, silent. SHA-256 `c8b61ece87cfb15830aaa5a2e7ef0b66f5fc38eb512505193e4849c191d6e8b9`.
+- Chrome for Testing's headless shell was not included. Its ABOUT file identifies Google Chrome.
+- Windows Node, Windows FFmpeg, and Windows `node_modules` are in the tree and were not executed. Windows Chromium was not downloaded. Mac was not assembled.
+- GPL corresponding source includes the FFmpeg commit archive. Source for the other statically linked libraries is not included.
+
 ## 0.3.0
 
 Distribution gate. This is not a customer installer.
